@@ -21,3 +21,10 @@ Set MySQL to UTC:
    `curl http://localhost:3000/api/products?category_id=1`
    or
    `curl http://localhost:3000/api/products?category_name=Women`
+
+
+## Things to improve:
+- The (https://github.com/stefankroes/ancestry)[Ancestry gem] was chose for simplicity and reliabilty(tested already, and used by many).
+  In this sample project it's ok, using path based trees has many drawbacks, mainly: enforcing and validating the data, indexing and updating are slower(increases exponentially with branch length) and there's a limit on branch length.
+  I would tend towards having another table for the relationship between each category and all of it's decendants - yes more rows, but given the fact they are fixed size integers I would expect faster indexing(not sure how MySQL is built though) and maybe even smaller index size in comparison with the VARCHAR index. As a bonus, all category -> decendant category relationships might even be kept in memory if the categories table is "small" enough.
+  Needs more testing and a bigger dataset to see if it's worth the hassle and time spent :)

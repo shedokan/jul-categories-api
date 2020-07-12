@@ -14,7 +14,11 @@ Set MySQL to UTC:
 2. Install the requirements
 3. Initialize the DB: `rails db:migrate db:seed`
 4. Run the server: `rails server -b 0.0.0.0 -p 3000 -e development`
-2. Get all products under the "Women" category: `curl http://localhost:3000/api/products?category_id=1`
+5. Get all products under the "Women" category:
+
+   `curl http://localhost:3000/api/products?category_id=1`
+   or
+   `curl http://localhost:3000/api/products?category_name=Women`
 
 
 
